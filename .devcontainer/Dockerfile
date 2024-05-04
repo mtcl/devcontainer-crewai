@@ -1,11 +1,18 @@
 FROM python:3.11
 
-ARG PYTHON_ENV=my_env
+ARG PYTHON_ENV=my_python_dev
 
 ENV PYTHON_ENV=$PYTHON_ENV
 
-RUN mkdir requirements
+RUN mkdir -p /opt/$PYTHON_ENV/bin
 
-COPY requirements.txt set_python_env.sh /requirements/
+RUN pip install poetry
 
-RUN bash ./requirements/set_python_env.sh $PYTHON_ENV
+COPY pyproject.toml /opt/$PYTHON_ENV/
+
+WORKDIR /opt/$PYTHON_ENV
+
+RUN poetry config virtualenvs.create false
+RUN poetry install --no-root
+
+ENV PATH=/opt/$PYTHON_ENV/bin:$PATH

@@ -5,7 +5,7 @@ from crewai import Agent, Task, Crew, Process
 # You can choose to use a local model through Ollama for example. See https://docs.crewai.com/how-to/LLM-Connections/ for more information.
 
 os.environ["OPENAI_API_BASE"] = 'http://localhost:11434/v1'
-os.environ["OPENAI_MODEL_NAME"] ='phi3'  # Adjust based on available model
+os.environ["OPENAI_MODEL_NAME"] ='llama3'  # Adjust based on available model
 os.environ["OPENAI_API_KEY"] ='sk-111111111111111111111111111111111111111111111111'
 
 
